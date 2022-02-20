@@ -110,6 +110,33 @@ class LinkedList:
             currNode = nextNo
         self.head = prevNode
         return
+
+    def add_index(self, n, value=None):
+        b = mylist.lenLinkedList() - 1
+        if n > b + 1:
+            return
+        else:
+            NewNode = Node(value)
+            if n == 0:
+                NewNode.nextNode = self.head
+                self.head = NewNode
+                return
+            if n == b + 1:
+                self.tail.nextNode = NewNode
+                self.tail = self.tail.nextNode
+                return
+            else:
+                index = 0
+                lastNode = self.head
+                while lastNode.nextNode:
+                    if index == n - 1:
+                        NewNode.nextNode = lastNode.nextNode
+                        lastNode.nextNode = NewNode
+                        return
+                    else:
+                        index += 1
+                        lastNode = lastNode.nextNode
+                return
 if __name__ == "__main__":
 
     mylist = LinkedList()
